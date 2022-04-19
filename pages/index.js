@@ -1,5 +1,7 @@
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
+import Banner from '../components/Banner';
+import Header from '../components/Header';
+import Main from '../components/Main';
 
 export default function Home() {
   return (
@@ -9,9 +11,9 @@ export default function Home() {
         <meta name='description' content='Clone for airbnb...' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <Navbar />
-      </main>
+      <Header />
+      <Banner />
+      <Main />
     </div>
   );
 }
