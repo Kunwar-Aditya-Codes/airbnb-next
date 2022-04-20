@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Banner from '../components/Banner';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import LargeBanner from '../components/LargeBanner';
 import LargeCard from '../components/LargeCard';
@@ -29,7 +30,7 @@ export default function Home({ exploreData, otherData }) {
             ))}
           </div>
         </section>
-        <section className='py-6'>
+        <section className='pt-6'>
           <h2 className='text-4xl font-semibold pb-6'>Live Anywhere</h2>
           <div className='flex space-x-5 p-4 -ml-4 overflow-x-scroll scrollbar-hide'>
             {otherData.map((item, index) => (
@@ -45,9 +46,7 @@ export default function Home({ exploreData, otherData }) {
           buttonText='Get Inspired'
         />
       </main>
-      <footer>
-        
-      </footer>
+      <Footer />
     </div>
   );
 }
