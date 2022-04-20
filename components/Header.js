@@ -6,11 +6,13 @@ import { BiMenu, BiUserCircle } from 'react-icons/bi';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
+import { FaUserFriends } from 'react-icons/fa';
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [guestNum, setGuestNum] = useState(1);
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.Selection.startDate);
@@ -68,6 +70,28 @@ const Header = () => {
             rangeColors={['#FD5B61']}
             onChange={handleSelect}
           />
+          <div className='flex items-center border-b mb-4'>
+            <h2 className='text-2xl flex-grow font-medium'>Number of Guests</h2>
+            <FaUserFriends className='h-5 w-5' />
+            <input
+              type='number'
+              className='w-12 pl-2 outline-none text-red-400'
+              value={guestNum}
+              onChange={(e) => setGuestNum(e.target.value)}
+              min={1}
+            />
+          </div>
+          <div className='flex items-center justify-evenly font-medium'>
+            <button
+              className='font-medium text-red-400'
+              onClick={() => setSearchInput('')}
+            >
+              Cancel
+            </button>
+            <button className='font-medium bg-red-400 text-white p-2 px-4 rounded-full'>
+              Search
+            </button>
+          </div>
         </div>
       )}
     </header>
