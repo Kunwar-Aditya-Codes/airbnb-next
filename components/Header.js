@@ -7,12 +7,15 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import { FaUserFriends } from 'react-icons/fa';
+import { useRouter } from 'next/router';
 
-const Header = () => {
+const Header = ({ placeholder }) => {
   const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guestNum, setGuestNum] = useState(1);
+
+  const router = useRouter();
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.Selection.startDate);
@@ -25,10 +28,25 @@ const Header = () => {
     key: 'Selection',
   };
 
+  const search = () => {
+    router.push({
+      pathname: '/search',
+      query: {
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        guests: guestNum,
+        location: searchInput,
+      },
+    });
+  };
+
   return (
     <header className='sticky z-[50] grid grid-cols-1 md:grid-cols-3 bg-white shadow-md p-5 md:px-10'>
       {/* Left */}
-      <div className='relative flex items-center h-10 cursor-pointer   '>
+      <div
+        onClick={() => router.push('/')}
+        className='relative flex items-center h-10 cursor-pointer   '
+      >
         <Image
           src='https://links.papareact.com/qd3'
           layout='fill'
@@ -41,7 +59,7 @@ const Header = () => {
       <div className='mx-auto w-full mt-3 md:mt-0 md:mx-0 flex items-center border-2 rounded-full p-2 md:shadow-sm '>
         <input
           type='text'
-          placeholder='Start your search'
+          placeholder={placeholder || 'Start your search'}
           className='outline-none flex-grow placeholder-gray-500'
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
@@ -88,7 +106,10 @@ const Header = () => {
             >
               Cancel
             </button>
-            <button className='font-medium bg-red-400 text-white p-2 px-4 rounded-full'>
+            <button
+              onClick={search}
+              className='font-medium bg-red-400 text-white p-2 px-4 rounded-full'
+            >
               Search
             </button>
           </div>
@@ -99,3 +120,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
