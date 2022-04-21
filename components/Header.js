@@ -41,7 +41,7 @@ const Header = ({ placeholder }) => {
   };
 
   return (
-    <header className='sticky z-[50] grid grid-cols-1 md:grid-cols-3 bg-white shadow-md p-5 md:px-10'>
+    <header className='sticky z-[50] grid grid-cols-1 md:grid-cols-3 bg-white shadow-md p-5 md:px-10 '>
       {/* Left */}
       <div
         onClick={() => router.push('/')}
@@ -120,5 +120,3 @@ const Header = ({ placeholder }) => {
 };
 
 export default Header;
-
-

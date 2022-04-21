@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 import { format } from 'date-fns';
 import InfoCard from '../components/InfoCard';
+import MapComp from '../components/MapComp';
 
 const Search = ({ searchResults }) => {
   const router = useRouter();
@@ -45,7 +46,11 @@ const Search = ({ searchResults }) => {
             )}
           </div>
         </section>
+        <section className='hidden xl:inline-flex xl:min-w-[600px] overflow-hidden'>
+          <MapComp searchResults={searchResults} />
+        </section>
       </main>
+
       <Footer />
     </div>
   );
