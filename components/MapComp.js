@@ -10,11 +10,7 @@ const MapComp = ({ searchResults }) => {
     latitude: result.lat,
   }));
 
-  // console.log(coordinates);
-
   const center = getCenter(coordinates);
-
-  console.log('this is the center >>>>>>>>', center);
 
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -33,7 +29,6 @@ const MapComp = ({ searchResults }) => {
     >
       {searchResults.map((result) => (
         <div key={result.long} className=''>
-          {/* The markers for the airbnb properties */}
           <Marker
             latitude={result.lat}
             longitude={result.long}
@@ -47,7 +42,7 @@ const MapComp = ({ searchResults }) => {
             >
               <p
                 role='img'
-                className='cursor-pointer text-2xl animate-bounce '
+                className='cursor-pointer text-2xl'
                 aria-label='push-pin'
               >
                 📌
@@ -55,14 +50,12 @@ const MapComp = ({ searchResults }) => {
             </a>
           </Marker>
 
-          {/* The popup when we click on a Marker */}
           {selectedLocation.long === result.long ? (
             <Popup
               onClose={() => setSelectedLocation({})}
               closeOnClick={true}
               latitude={result.lat}
               longitude={result.long}
-              className='z-[100000]'
             >
               {result.title}
             </Popup>
